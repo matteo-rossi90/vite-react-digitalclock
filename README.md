@@ -1,8 +1,9 @@
-# React + Vite
+**Orologio**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Realizzazione di una piccola app che mostra l'ora corrente nel formato ore, minuti e secondi contando du impostazioni elaborate in JavaScript. I secondi scorrono in tempo reale.
+Nell'applicazione è stato realizzato anche un markup specifico
 
-Currently, two official plugins are available:
+Questa applicazione è finalizzata a continuare lo studio di React e a testare l'aggiornamento dinamico di elemento attraverso le hooks, nonché l'utilizzo dei fogli di stile delle componenti
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+
