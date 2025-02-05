@@ -2,46 +2,88 @@ import './Clock.css'
 
 import { useState, useEffect } from "react";
 
+function getTime(d){
+
+    const ret = {
+
+    }
+
+    //secondi
+    const secs = d.getSeconds().toString().padStart(2, '0')
+   
+    ret.firstSecond = secs.charAt(0)
+    ret.secondSecond = secs.charAt(1)
+
+    //minuti
+    const min = d.getMinutes().toString().padStart(2, '0')
+   
+    ret.firstMinute = min.charAt(0)
+    ret.secondMinute = min.charAt(1)
+
+    //secondi
+    const hours = d.getHours().toString().padStart(2, '0')
+
+    ret.firstHour = hours.charAt(0)
+    ret.secondHour = hours.charAt(1)
+    
+    return ret;
+}
+
 function Clock(){
 
     const t = Date.now()
 
     const dateIni = new Date(t);
 
+    const defaultTime = getTime(dateIni)
+
     const [date, setDate] = useState(dateIni);
 
     //secondi
-    const [firstSecond, setFirstSecond] = useState(0)
-    const [secondSecond, setSecondSecond] = useState(0)
+    const [firstSecond, setFirstSecond] = useState(defaultTime.firstSecond)
+    const [secondSecond, setSecondSecond] = useState(defaultTime.secondSecond)
 
     //minuti
-    const [firstMinute, setFirstMinute] = useState(0)
-    const [secondMinute, setSecondMinute] = useState(0)
+    const [firstMinute, setFirstMinute] = useState(defaultTime.firstMinute)
+    const [secondMinute, setSecondMinute] = useState(defaultTime.secondMinute)
 
     //ore
-    const [firstHour, setFirstHour] = useState(0)
-    const [secondHour, setSecondHour] = useState(0)
+    const [firstHour, setFirstHour] = useState(defaultTime.firstHour)
+    const [secondHour, setSecondHour] = useState(defaultTime.secondHour)
 
     useEffect(() => {
 
         const interval = setInterval(() => {
             const time = date.getTime() + 1000;
             const d = new Date(time)
+            const defaultTime = getTime(dateIni)
 
             //secondi
-            const secs = d.getSeconds().toString().padStart(2, '0')
-            setFirstSecond(secs.charAt(0))
-            setSecondSecond(secs.charAt(1))
+
+
+            if(secondSecond !== defaultTime.secondSecond){
+                setSecondSecond(defaultTime.secondSecond)
+            }
 
             //minuti
-            const min = d.getMinutes().toString().padStart(2, '0')
-            setFirstMinute(min.charAt(0))
-            setSecondMinute(min.charAt(1))
 
-            //secondi
-            const hours = d.getHours().toString().padStart(2, '0')
-            setFirstHour(hours.charAt(0))
-            setSecondHour(hours.charAt(1))
+            if (firstMinute !== defaultTime.firstMinute) {
+                setFirstMinute(defaultTime.firstMinute)
+            }
+
+            if (secondMinute !== defaultTime.secondMinute) {
+                setSecondMinute(defaultTime.secondMinute)
+            }
+
+            //ore
+
+            if (firstHour !== defaultTime.firstHour) {
+                setFirstHour(defaultTime.firstHour)
+            }
+
+            if (secondHour !== defaultTime.secondHour) {
+                setSecondHour(defaultTime.secondHour)
+            }
             
             setDate(d)
         }, 1000);
